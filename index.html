@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultorio Médico</title>
+</head>
+<body>
+    <h1>Consultorio Médico</h1>
+    <script>  
+           
+        function Consultorio (_nombre) {
+            this.nombre = _nombre;
+            this.pacientes = [];
+
+            this.addPaciente = function(nuevopaciente){
+                this.pacientes.push(nuevopaciente);
+            } 
+            this.showPacientes = function(){
+                for (paciente of this.pacientes) {
+                paciente.show();
+                }
+            }
+            
+            this.filterPacientes = function (nombre) {
+                for (paciente of this.pacientes) {
+                    if (paciente.nombre.toUpperCase() == nombre.toUpperCase()) {
+                        paciente.show();
+                    }
+                }
+            }    
+        }
+
+        function Paciente (_nombre, _rut, _diagnostico) {
+            this.nombre = _nombre;
+            this.rut = _rut;
+            this.diagnostico = _diagnostico;
+
+            this.show = function() {
+                console.log(`El nombre del paciente es ${this.nombre}, y su diagnóstico es ${this.diagnostico}`)
+            }
+        }
+      
+        const medcenter = new Consultorio('medcenter');
+        const paciente1 = new Paciente('Jose Luis Valcarcel Bravo', '13.776.797-K', 'Viruela');
+        const paciente2 = new Paciente('Joaquin Avendaño Villanueva', '22.546.741-5', 'Hipertension');
+        const paciente3 = new Paciente('Marta Villanueva Moreno', '13.730.200-4', 'Diabetes');
+        const paciente4 = new Paciente('Josefa Valcarcel Villanueva', '25.632.145-5', 'Gripe');
+
+        
+        medcenter.addPaciente(paciente1);
+        medcenter.addPaciente(paciente2);
+        medcenter.addPaciente(paciente3);
+        medcenter.addPaciente(paciente4);
+    </script>
+</body>
+</html>
